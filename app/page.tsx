@@ -15,7 +15,7 @@ export default function Home() {
       <TodaysOffers />
       <Features />
       <ReviewsPreview />
-      <Newsletter />
+      {/* <Newsletter /> */}
     </div>
   )
 }

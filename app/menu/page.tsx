@@ -19,233 +19,151 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  // Coffee & Drinks
-  {
-    id: '1',
-    name: 'Traditional Ethiopian Coffee',
-    category: 'Coffee',
-    price: 45,
-    description: 'Authentic coffee ceremony brew served in traditional cups with incense and popcorn',
-    image: '/images/ethiopian-coffee.jpg',
-    ingredients: ['Yirgacheffe Beans', 'Traditional Jebena', 'Incense', 'Fresh Popcorn'],
-    preparationTime: 15,
-    popular: true,
-    vegan: true,
-    glutenFree: true,
-    ethiopianSpecial: true
-  },
-  {
-    id: '2',
-    name: 'Macchiato',
-    category: 'Coffee',
-    price: 35,
-    description: 'Rich espresso with a dollop of steamed milk foam',
-    image: '/images/macchiato.jpg',
-    ingredients: ['Espresso', 'Steamed Milk Foam'],
-    preparationTime: 4,
-    popular: true,
-    vegan: false,
-    glutenFree: true,
-    ethiopianSpecial: false
-  },
-  {
-    id: '3',
-    name: 'Spiced Ethiopian Latte',
-    category: 'Coffee',
-    price: 40,
-    description: 'Creamy latte infused with traditional Ethiopian spices - turmeric, cinnamon, and cardamom',
-    image: '/images/spiced-latte.jpg',
-    ingredients: ['Espresso', 'Steamed Milk', 'Turmeric', 'Cinnamon', 'Cardamom'],
-    preparationTime: 5,
-    popular: false,
-    vegan: false,
-    glutenFree: true,
-    ethiopianSpecial: true
-  },
-  {
-    id: '4',
-    name: 'Sidamo Cold Brew',
-    category: 'Coffee',
-    price: 38,
-    description: 'Smooth cold brew using single-origin Sidamo beans, served over ice',
-    image: '/images/cold-brew.jpg',
-    ingredients: ['Sidamo Coffee Beans', 'Ice'],
-    preparationTime: 2,
-    popular: false,
-    vegan: true,
-    glutenFree: true,
-    ethiopianSpecial: true
-  },
-  {
-    id: '5',
-    name: 'Traditional Ethiopian Tea',
-    category: 'Tea',
-    price: 25,
-    description: 'Aromatic black tea with fresh mint and spices',
-    image: '/images/ethiopian-tea.jpg',
-    ingredients: ['Black Tea', 'Fresh Mint', 'Cardamom', 'Cloves'],
-    preparationTime: 5,
-    popular: false,
-    vegan: true,
-    glutenFree: true,
-    ethiopianSpecial: true
-  },
-
-  // Pastries & Snacks
-  {
-    id: '6',
-    name: 'Injera Chips',
-    category: 'Snacks',
-    price: 35,
-    description: 'Crispy injera triangles seasoned with berbere and served with yogurt dip',
-    image: '/images/injera-chips.jpg',
-    ingredients: ['Injera', 'Berbere Spice', 'Yogurt', 'Herbs'],
-    preparationTime: 8,
-    popular: true,
-    vegan: false,
-    glutenFree: false,
-    ethiopianSpecial: true
-  },
-  {
-    id: '7',
-    name: 'Dabo Kolo',
-    category: 'Snacks',
-    price: 20,
-    description: 'Traditional Ethiopian snack - small, crunchy bread pieces perfect with coffee',
-    image: '/images/dabo-kolo.jpg',
-    ingredients: ['Wheat Flour', 'Spices', 'Oil'],
-    preparationTime: 3,
-    spicyLevel: 1,
-    popular: false,
-    vegan: true,
-    glutenFree: false,
-    ethiopianSpecial: true
-  },
-  {
-    id: '8',
-    name: 'Croissant',
-    category: 'Pastries',
-    price: 30,
-    description: 'Buttery, flaky French croissant baked fresh daily',
-    image: '/images/croissant.jpg',
-    ingredients: ['Butter', 'Flour', 'Yeast', 'Milk'],
-    preparationTime: 2,
-    popular: true,
-    vegan: false,
-    glutenFree: false,
-    ethiopianSpecial: false
-  },
-
-  // Breakfast
-  {
-    id: '9',
-    name: 'Ful Medames',
-    category: 'Breakfast',
-    price: 65,
-    description: 'Traditional Ethiopian breakfast of mashed fava beans with olive oil, lemon, and spices',
-    image: '/images/ful-medames.jpg',
-    ingredients: ['Fava Beans', 'Olive Oil', 'Lemon', 'Onions', 'Spices'],
-    preparationTime: 10,
-    spicyLevel: 1,
-    popular: true,
-    vegan: true,
-    glutenFree: true,
-    ethiopianSpecial: true
-  },
-  {
-    id: '10',
-    name: 'Chechebsa',
-    category: 'Breakfast',
-    price: 55,
-    description: 'Kita bread mixed with spiced butter and berbere, a classic Ethiopian breakfast',
-    image: '/images/chechebsa.jpg',
-    ingredients: ['Kita Bread', 'Spiced Butter', 'Berbere', 'Honey'],
-    preparationTime: 8,
-    spicyLevel: 2,
-    popular: false,
-    vegan: false,
-    glutenFree: false,
-    ethiopianSpecial: true
-  },
-
-  // Lunch & Main Courses
-  {
-    id: '11',
-    name: 'Shiro Wet',
-    category: 'Main Courses',
-    price: 85,
-    description: 'Flavorful chickpea stew served with injera - a vegetarian favorite',
-    image: '/images/shiro.jpg',
-    ingredients: ['Chickpea Flour', 'Onions', 'Garlic', 'Berbere', 'Injera'],
-    preparationTime: 12,
-    spicyLevel: 2,
-    popular: true,
-    vegan: true,
-    glutenFree: false,
-    ethiopianSpecial: true
-  },
-  {
-    id: '12',
-    name: 'Tibs',
-    category: 'Main Courses',
-    price: 120,
-    description: 'Sautéed beef or lamb with onions, peppers, and Ethiopian spices',
-    image: '/images/tibs.jpg',
-    ingredients: ['Beef', 'Onions', 'Peppers', 'Ethiopian Spices', 'Injera'],
-    preparationTime: 15,
-    spicyLevel: 2,
-    popular: true,
-    vegan: false,
-    glutenFree: false,
-    ethiopianSpecial: true
-  },
-  {
-    id: '13',
-    name: 'Vegetarian Platter',
-    category: 'Main Courses',
-    price: 95,
-    description: 'Sample 5 different vegetarian dishes including lentils, greens, and potatoes',
-    image: '/images/vegetarian-platter.jpg',
-    ingredients: ['Lentils', 'Collard Greens', 'Potatoes', 'Carrots', 'Injera'],
-    preparationTime: 10,
-    spicyLevel: 1,
-    popular: false,
-    vegan: true,
-    glutenFree: false,
-    ethiopianSpecial: true
-  },
-
-  // Desserts
-  {
-    id: '14',
-    name: 'Tiramisu',
-    category: 'Desserts',
-    price: 45,
-    description: 'Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone',
-    image: '/images/tiramisu.jpg',
-    ingredients: ['Mascarpone', 'Ladyfingers', 'Coffee', 'Cocoa'],
-    preparationTime: 3,
-    popular: true,
-    vegan: false,
-    glutenFree: false,
-    ethiopianSpecial: false
-  },
-  {
-    id: '15',
-    name: 'Coffee Chocolate Mousse',
-    category: 'Desserts',
-    price: 40,
-    description: 'Rich chocolate mousse infused with Ethiopian coffee',
-    image: '/images/coffee-mousse.jpg',
-    ingredients: ['Dark Chocolate', 'Ethiopian Coffee', 'Cream', 'Eggs'],
-    preparationTime: 4,
-    popular: false,
-    vegan: false,
-    glutenFree: true,
-    ethiopianSpecial: true
-  }
-]
-
+    // Coffee & Drinks
+    {
+      id: '1',
+      name: 'Flat White',
+      category: 'Coffee',
+      price: 35,
+      description: 'Smooth espresso with velvety steamed milk, a café classic.',
+      image: '/images/flat-white.jpg',
+      ingredients: ['Espresso', 'Steamed Milk'],
+      preparationTime: 4,
+      popular: true,
+      vegan: false,
+      glutenFree: true,
+      ethiopianSpecial: false
+    },
+    {
+      id: '2',
+      name: 'Cappuccino',
+      category: 'Coffee',
+      price: 35,
+      description: 'Espresso with steamed milk and a thick layer of frothy milk foam.',
+      image: '/images/cappuccino.jpg',
+      ingredients: ['Espresso', 'Steamed Milk', 'Milk Foam'],
+      preparationTime: 4,
+      popular: true,
+      vegan: false,
+      glutenFree: true,
+      ethiopianSpecial: false
+    },
+    {
+      id: '3',
+      name: 'Latte',
+      category: 'Coffee',
+      price: 35,
+      description: 'Creamy espresso drink with steamed milk and a light foam topping.',
+      image: '/images/latte.jpg',
+      ingredients: ['Espresso', 'Steamed Milk', 'Milk Foam'],
+      preparationTime: 4,
+      popular: true,
+      vegan: false,
+      glutenFree: true,
+      ethiopianSpecial: false
+    },
+    {
+      id: '4',
+      name: 'Americano',
+      category: 'Coffee',
+      price: 30,
+      description: 'Espresso diluted with hot water for a rich, smooth flavor.',
+      image: '/images/americano.jpg',
+      ingredients: ['Espresso', 'Hot Water'],
+      preparationTime: 3,
+      popular: true,
+      vegan: true,
+      glutenFree: true,
+      ethiopianSpecial: false
+    },
+    {
+      id: '5',
+      name: 'Mocha',
+      category: 'Coffee',
+      price: 40,
+      description: 'Espresso combined with chocolate syrup and steamed milk, topped with whipped cream.',
+      image: '/images/mocha.jpg',
+      ingredients: ['Espresso', 'Steamed Milk', 'Chocolate', 'Whipped Cream'],
+      preparationTime: 5,
+      popular: true,
+      vegan: false,
+      glutenFree: true,
+      ethiopianSpecial: false
+    },
+  
+    // Pastries & Snacks
+    {
+      id: '6',
+      name: 'Croissant',
+      category: 'Pastries',
+      price: 30,
+      description: 'Buttery, flaky French croissant baked fresh daily.',
+      image: '/images/croissant.jpg',
+      ingredients: ['Butter', 'Flour', 'Yeast', 'Milk'],
+      preparationTime: 2,
+      popular: true,
+      vegan: false,
+      glutenFree: false,
+      ethiopianSpecial: false
+    },
+    {
+      id: '7',
+      name: 'Chocolate Muffin',
+      category: 'Pastries',
+      price: 25,
+      description: 'Moist chocolate muffin with chocolate chips, perfect with coffee.',
+      image: '/images/chocolate-muffin.jpg',
+      ingredients: ['Flour', 'Cocoa', 'Sugar', 'Eggs', 'Butter'],
+      preparationTime: 3,
+      popular: true,
+      vegan: false,
+      glutenFree: false,
+      ethiopianSpecial: false
+    },
+    {
+      id: '8',
+      name: 'Scone with Jam & Cream',
+      category: 'Pastries',
+      price: 30,
+      description: 'Traditional British scone served with strawberry jam and clotted cream.',
+      image: '/images/scone.jpg',
+      ingredients: ['Flour', 'Butter', 'Eggs', 'Jam', 'Cream'],
+      preparationTime: 5,
+      popular: true,
+      vegan: false,
+      glutenFree: false,
+      ethiopianSpecial: false
+    },
+    {
+      id: '9',
+      name: 'Cheese & Tomato Sandwich',
+      category: 'Snacks',
+      price: 35,
+      description: 'Freshly made sandwich with cheddar cheese, tomato, and crisp lettuce.',
+      image: '/images/cheese-tomato-sandwich.jpg',
+      ingredients: ['Bread', 'Cheddar Cheese', 'Tomato', 'Lettuce', 'Butter'],
+      preparationTime: 4,
+      popular: true,
+      vegan: false,
+      glutenFree: false,
+      ethiopianSpecial: false
+    },
+    {
+      id: '10',
+      name: 'Ham & Cheese Panini',
+      category: 'Snacks',
+      price: 40,
+      description: 'Grilled panini with sliced ham, cheese, and a touch of mustard.',
+      image: '/images/ham-cheese-panini.jpg',
+      ingredients: ['Panini Bread', 'Ham', 'Cheese', 'Mustard'],
+      preparationTime: 5,
+      popular: true,
+      vegan: false,
+      glutenFree: false,
+      ethiopianSpecial: false
+    }
+  ];
+  
 const categories = [
   { id: 'all', name: 'All Items', count: menuItems.length },
   { id: 'Coffee', name: 'Coffee & Drinks', count: menuItems.filter(item => item.category === 'Coffee' || item.category === 'Tea').length },
@@ -407,7 +325,7 @@ export default function MenuPage() {
             <div key={item.id} className="card group hover:border-primary transition-all duration-300 relative">
               {/* Popular Badge */}
               {item.popular && (
-                <div className="absolute -top-2 -right-2 z-10 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
+                <div className="absolute z-50 -top-2 -right-2  bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
                   <Star className="h-3 w-3 fill-current" />
                   <span>Popular</span>
                 </div>
@@ -422,9 +340,10 @@ export default function MenuPage() {
 
               {/* Item Image */}
               <div className="aspect-square bg-gradient-to-br from-primary to-accent rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-black bg-opacity-20" />
+                <div className="absolute inset-0  bg-opacity-20" />
                 <div className="relative z-10 text-center text-white">
-                  <span className="text-lg font-semibold">Item Image</span>
+                  {/* <span className="text-lg font-semibold">Item Image</span> */}
+                  <img src={item.image} />
                 </div>
                 
                 {/* Dietary Badges */}
@@ -517,7 +436,7 @@ export default function MenuPage() {
         </div>
 
         {/* Special Offers Banner */}
-        <div className="card bg-gradient-to-r from-primary to-accent text-white mb-8">
+        {/* <div className="card bg-gradient-to-r from-primary to-accent text-white mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-2">Traditional Coffee Ceremony Experience</h3>
@@ -531,7 +450,7 @@ export default function MenuPage() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Cart Summary */}
         {Object.keys(cart).length > 0 && (
@@ -543,7 +462,7 @@ export default function MenuPage() {
                   {Object.values(cart).reduce((a, b) => a + b, 0)} items
                 </p>
               </div>
-              <button className="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2">
+              <button className="bg-white text-[#8D7A5D] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2">
                 <ShoppingBag className="h-5 w-5" />
                 <span>Checkout</span>
               </button>
