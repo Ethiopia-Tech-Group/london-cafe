@@ -25,12 +25,16 @@ export default function ReservationsPage() {
     phone: '',
     specialRequests: ''
   })
-
   const branches = [
-    { id: '1', name: 'Covent Garden', address: '25 Long Acre, Covent Garden' },
-    { id: '2', name: 'Soho', address: '42 Dean Street, Soho' },
-    { id: '3', name: 'Shoreditch', address: '78 Brick Lane, Shoreditch' }
-  ]
+    { id: '1', name: 'Bole Road', address: 'Bole Road, Addis Ababa, Ethiopia' },
+    { id: '2', name: 'Morning Star', address: 'Morning Star, Bole, Addis Ababa, Ethiopia' },
+    { id: '3', name: 'Bisrate Gabriel', address: 'South Africa Street, Bisrate Gabriel, Addis Ababa, Ethiopia' },
+    { id: '4', name: 'Bole International Airport', address: 'Bole International Airport, Addis Ababa, Ethiopia' },
+    { id: '5', name: 'Bole Medhanialem', address: 'Bole Medhanialem, Addis Ababa, Ethiopia' },
+    { id: '6', name: 'Alem Cinema', address: 'Alem Cinema area, Addis Ababa, Ethiopia' },
+    // { id: '7', name: 'Arada', address: 'Arada area, Addis Ababa, Ethiopia' }
+  ];
+  
 
   const timeSlots = [
     '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
@@ -53,34 +57,37 @@ export default function ReservationsPage() {
     switch (step) {
       case 1:
         return (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Select Branch</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {branches.map(branch => (
-                <div
-                  key={branch.id}
-                  className={`card cursor-pointer transition-all ${
-                    formData.branch === branch.id ? 'border-primary' : ''
-                  }`}
-                  onClick={() => updateFormData('branch', branch.id)}
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold text-white mb-6">Select Branch</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {branches.map(branch => (
+                  <div
+                    key={branch.id}
+                    className={`
+                      card cursor-pointer transition-all transform rounded-xl p-4
+                      bg-gray-800 hover:scale-105
+                      ${formData.branch === branch.id ? 'border-2 border-primary shadow-2xl scale-105' : 'border border-gray-700'}
+                    `}
+                    onClick={() => updateFormData('branch', branch.id)}
+                  >
+                    <MapPin className="h-6 w-6 text-primary mb-3" />
+                    <h3 className="text-lg font-semibold text-white">{branch.name}</h3>
+                    <p className="text-gray-400 text-sm">{branch.address}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => setStep(2)}
+                  disabled={!formData.branch}
+                  className="bg-primary p-1 px-2 rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <MapPin className="h-6 w-6 text-primary mb-3" />
-                  <h3 className="text-lg font-semibold text-white">{branch.name}</h3>
-                  <p className="text-gray-400 text-sm">{branch.address}</p>
-                </div>
-              ))}
+                  Continue
+                </button>
+              </div>
             </div>
-            <div className="flex justify-end">
-              <button
-                onClick={() => setStep(2)}
-                disabled={!formData.branch}
-                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Continue
-              </button>
-            </div>
-          </div>
-        )
+          );
+          
 
       case 2:
         return (
@@ -136,14 +143,14 @@ export default function ReservationsPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setStep(1)}
-                className="btn-secondary"
+                className="bg-gray-800 p-1 px-2 rounded cursor-pointer"
               >
                 Back
               </button>
               <button
                 onClick={() => setStep(3)}
                 disabled={!formData.date || !formData.time}
-                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-primary p-1 px-2 rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Continue
               </button>
@@ -201,13 +208,13 @@ export default function ReservationsPage() {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="btn-secondary"
+                  className="bg-gray-800 p-1 px-2 rounded cursor-pointer"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
-                  className="btn-primary"
+                  className="bg-primary p-1 px-2 rounded cursor-pointer"
                 >
                   Confirm Reservation
                 </button>
@@ -258,7 +265,7 @@ export default function ReservationsPage() {
                   specialRequests: ''
                 })
               }}
-              className="btn-primary"
+              className="bg-primary p-1 px-2 rounded cursor-pointer"
             >
               Make Another Reservation
             </button>

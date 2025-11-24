@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import StickyHeader from "@/components/layout/StickyHeader";
+import StickyFooter from "@/components/layout/StickyFooter";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -19,9 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+       <body className={`font-sans antialiased flex flex-col min-h-screen ${poppins.variable} `} >
+        <StickyHeader />
+        <main className="flex-1 pt-16"> {/* Add padding-top to account for sticky header */}
+          {children}
+        </main>
+        <StickyFooter />
       </body>
     </html>
   );
