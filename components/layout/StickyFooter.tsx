@@ -42,11 +42,11 @@ export default function StickyFooter() {
 
   const branches = [
     'Bole Branch',
-    'Edna Mall Branch',
+    'Morning Star Branch',
     'Bisrate Gabriel Branch',
     'Bole International Airport ',
     'Bole Medhanialem Branch',
-    'Alem Cinema Branch',
+    'Bole  Alemenesh PlazaBranch',
   ];
   
   return (

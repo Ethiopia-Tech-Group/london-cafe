@@ -83,7 +83,7 @@ const branches: Branch[] = [
     {
       id: 'edna-mall',
       name: 'London Cafe - Morning Star',
-      address: 'Beside Edna Mall, Bole, Addis Ababa, Ethiopia',
+      address: 'Beside Morning Star, Bole, Addis Ababa, Ethiopia',
       phone: '+251 96 957 1106',
       email: 'morningstar@londoncafe.et',
       hours: {
@@ -97,7 +97,7 @@ const branches: Branch[] = [
       },
       coordinates: { lat: 8.9815, lng: 38.7912 },
       features: ['Coffee & Snacks', 'Student Discount', 'Takeaway', 'Free WiFi'],
-      description: 'Modern branch next to Edna Mall, perfect for casual coffee breaks and quick snacks.',
+      description: 'Modern branch next to Morning Star, perfect for casual coffee breaks and quick snacks.',
       image: '/images/london-cafe-edna.jpg',
       rating: 4.4,
       reviewCount: 180,

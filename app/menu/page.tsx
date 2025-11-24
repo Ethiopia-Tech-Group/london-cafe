@@ -417,7 +417,7 @@ export default function MenuPage() {
                 ) : (
                   <button 
                     onClick={() => addToCart(item.id)}
-                    className="btn-primary flex items-center space-x-2"
+                    className="bg-primary px-2 py-1 rounded-lg flex items-center space-x-2"
                   >
                     <Plus className="h-4 w-4" />
                     <span>Add to Cart</span>

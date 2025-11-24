@@ -205,8 +205,8 @@ const menuItems: MenuItem[] = [
     },
     {
       id: 'edna-mall',
-      name: 'Edna Mall Branch',
-      address: 'Beside Edna Mall, Bole, Addis Ababa',
+      name: 'Morning Star Branch',
+      address: 'Beside Morning Star, Bole, Addis Ababa',
       phone: '+251 96 957 1106',
       hours: '8:00 AM - 10:00 PM',
       distance: '1 km',
@@ -245,8 +245,8 @@ const menuItems: MenuItem[] = [
     },
     {
       id: 'alem-cinema',
-      name: 'Alem Cinema Branch',
-      address: 'Alem Cinema area, Addis Ababa',
+      name: 'Bole  Alemenesh PlazaBranch',
+      address: 'Bole  Alemenesh Plazaarea, Addis Ababa',
       phone: '+251 11 667 3344',
       hours: '7:00 AM - 9:00 PM',
       distance: '1.8 km',

@@ -31,7 +31,7 @@ export default function ReservationsPage() {
     { id: '3', name: 'Bisrate Gabriel', address: 'South Africa Street, Bisrate Gabriel, Addis Ababa, Ethiopia' },
     { id: '4', name: 'Bole International Airport', address: 'Bole International Airport, Addis Ababa, Ethiopia' },
     { id: '5', name: 'Bole Medhanialem', address: 'Bole Medhanialem, Addis Ababa, Ethiopia' },
-    { id: '6', name: 'Alem Cinema', address: 'Alem Cinema area, Addis Ababa, Ethiopia' },
+    { id: '6', name: 'Alem Cinema', address: 'Bole  Alemenesh Plazaarea, Addis Ababa, Ethiopia' },
     // { id: '7', name: 'Arada', address: 'Arada area, Addis Ababa, Ethiopia' }
   ];
   
