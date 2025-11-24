@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { MapPin, Phone, Clock, Wifi, Coffee, Users, Car, Zap } from 'lucide-react'
+import { MapPin, Phone, Clock, Wifi, Coffee, Users, Car, Zap, ChevronDown, ChevronUp } from 'lucide-react'
 
 const branches = [
     {
@@ -73,9 +73,10 @@ const featureIcons: { [key: string]: any } = {
 
 export default function BranchSelector() {
     const [selectedBranch, setSelectedBranch] = useState(branches[0])
+    const [isExpanded, setIsExpanded] = useState(false)
 
     return (
-        <section className="py-20 bg-background relative overflow-hidden">
+        <section className="py-12 sm:py-16 lg:py-20 bg-background relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
@@ -85,22 +86,36 @@ export default function BranchSelector() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <div className="text-center mb-12 sm:mb-16">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                         Our <span className="text-primary">Popular Locations</span>
                     </h2>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-4">
                         Discover your perfect spot across our six carefully designed cafes in Addis Ababa
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                     {/* Branch List */}
-                    <div className="lg:col-span-1 space-y-6">
+                    <div className="lg:col-span-1">
+                        {/* Mobile Toggle Button */}
+                        <button
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className="lg:hidden w-full mb-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-between"
+                        >
+                            <span className="flex items-center space-x-2">
+                                <MapPin className="h-4 w-4 text-primary" />
+                                <span>View All Branches ({branches.length})</span>
+                            </span>
+                            {isExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                        </button>
+
+                        {/* Branch List - Collapsible on mobile */}
+                        <div className={`space-y-4 sm:space-y-6 ${isExpanded ? 'block' : 'hidden lg:block'}`}>
                         {branches.map((branch) => (
                             <div
                                 key={branch.id}
-                                className={`card cursor-pointer transition-all duration-500 group hover:scale-105 ${selectedBranch.id === branch.id
+                                className={`card cursor-pointer transition-all duration-500 group hover:scale-105 p-4 sm:p-6 ${selectedBranch.id === branch.id
                                         ? 'border-primary border p-2 rounded-lg shadow-primary shadow-2xl transform scale-105'
                                         : 'hover:border-gray-600'
                                     }`}
@@ -113,26 +128,26 @@ export default function BranchSelector() {
                                 )}
 
                                 <div className="flex items-start justify-between mb-3">
-                                    <h3 className="text-white font-bold text-xl group-hover:text-primary transition-colors">
+                                    <h3 className="text-white font-bold text-lg sm:text-xl group-hover:text-primary transition-colors">
                                         {branch.name}
                                     </h3>
-                                    <div className="flex items-center space-x-1 bg-primary bg-opacity-20 px-2 py-1 rounded">
+                                    <div className="flex items-center space-x-1 bg-primary bg-opacity-20 px-2 py-1 rounded flex-shrink-0">
                                         <Star className="h-3 w-3 text-yellow-400 fill-current" />
-                                        <span className="text-white text-sm">{branch.rating}</span>
+                                        <span className="text-white text-xs sm:text-sm">{branch.rating}</span>
                                     </div>
                                 </div>
 
-                                <div className="space-y-2 mb-4">
-                                    <div className="flex items-center text-gray-400 text-sm">
-                                        <MapPin className="h-4 w-4 mr-2 text-primary" />
-                                        <span>{branch.address}</span>
+                                <div className="space-y-2 mb-3 sm:mb-4">
+                                    <div className="flex items-center text-gray-400 text-xs sm:text-sm">
+                                        <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-primary flex-shrink-0" />
+                                        <span className="line-clamp-1">{branch.address}</span>
                                     </div>
-                                    <div className="flex items-center text-gray-400 text-sm">
-                                        <Phone className="h-4 w-4 mr-2 text-primary" />
+                                    <div className="flex items-center text-gray-400 text-xs sm:text-sm">
+                                        <Phone className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-primary flex-shrink-0" />
                                         <span>{branch.phone}</span>
                                     </div>
-                                    <div className="flex items-center text-gray-400 text-sm">
-                                        <Clock className="h-4 w-4 mr-2 text-primary" />
+                                    <div className="flex items-center text-gray-400 text-xs sm:text-sm">
+                                        <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-primary flex-shrink-0" />
                                         <span>{branch.hours}</span>
                                     </div>
                                 </div>
@@ -158,24 +173,25 @@ export default function BranchSelector() {
                                 </div>
                             </div>
                         ))}
+                        </div>
                     </div>
 
                     {/* Selected Branch Details */}
-                    <div className="lg:col-span-2 ">
-                        <div className="card group hover:shadow-2xl transition-all duration-500 p-4">
-                            <div className="flex items-center justify-between mb-6">
-                                <h3 className="text-2xl font-bold text-white">{selectedBranch.name}</h3>
-                                <div className="flex items-center space-x-4">
-                                    <span className="text-gray-400 text-sm">{selectedBranch.distance}</span>
-                                    <div className="flex items-center space-x-1 bg-primary bg-opacity-20 px-3 py-1 rounded-full">
-                                        <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                                        <span className="text-white font-semibold">{selectedBranch.rating}</span>
+                    <div className="lg:col-span-2">
+                        <div className="card group hover:shadow-2xl transition-all duration-500 p-4 sm:p-6">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6 gap-3">
+                                <h3 className="text-xl sm:text-2xl font-bold text-white">{selectedBranch.name}</h3>
+                                <div className="flex items-center space-x-3 sm:space-x-4">
+                                    <span className="text-gray-400 text-xs sm:text-sm">{selectedBranch.distance}</span>
+                                    <div className="flex items-center space-x-1 bg-primary bg-opacity-20 px-2 sm:px-3 py-1 rounded-full">
+                                        <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+                                        <span className="text-white font-semibold text-sm sm:text-base">{selectedBranch.rating}</span>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Branch Image */}
-                            <div className="aspect-video bg-gradient-to-br from-primary to-accent rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden">
+                            <div className="aspect-video bg-gradient-to-br from-primary to-accent rounded-2xl mb-4 sm:mb-6 flex items-center justify-center relative overflow-hidden">
                                 <div className="absolute inset-0  bg-opacity-20" />
                                 <img
                                     src={selectedBranch.image} // dynamic branch image
@@ -192,9 +208,9 @@ export default function BranchSelector() {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                                 <div>
-                                    <h4 className="text-white font-semibold text-lg mb-4">Branch Information</h4>
+                                    <h4 className="text-white font-semibold text-base sm:text-lg mb-3 sm:mb-4">Branch Information</h4>
                                     <div className="space-y-4">
                                         <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
                                             <div className="flex items-center space-x-3">
@@ -221,8 +237,8 @@ export default function BranchSelector() {
                                 </div>
 
                                 <div>
-                                    <h4 className="text-white font-semibold text-lg mb-4">Features & Amenities</h4>
-                                    <div className="grid grid-cols-2 gap-3">
+                                    <h4 className="text-white font-semibold text-base sm:text-lg mb-3 sm:mb-4">Features & Amenities</h4>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                                         {selectedBranch.features.map((feature) => {
                                             const Icon = featureIcons[feature]
                                             return (
@@ -240,7 +256,7 @@ export default function BranchSelector() {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex space-x-4 mt-8 pt-6 border-t border-gray-700">
+                            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-700">
                                 <Link
                                     href={`/branches?branch=${selectedBranch.id}`}
                                     className="flex-1 rounded-lg bg-primary text-center py-3"
@@ -257,10 +273,10 @@ export default function BranchSelector() {
                         </div>
                     </div>
                 </div>
-                <div className="text-center mt-12">
+                <div className="text-center mt-8 sm:mt-12">
           <Link
             href="/branches"
-            className="inline-flex border border-primary p-1 px-3 rounded-xl  items-center space-x-2 text-[#8D7A5D] hover:text-accent font-semibold  transition-colors"
+            className="inline-flex border border-primary p-2 sm:p-3 px-4 sm:px-5 rounded-xl items-center space-x-2 text-[#8D7A5D] hover:text-accent font-semibold transition-colors text-sm sm:text-base"
           >
             <span>View All Branches</span>
             <span>→</span>

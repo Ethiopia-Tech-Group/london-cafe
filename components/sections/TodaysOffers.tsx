@@ -91,7 +91,7 @@ export default function TodaysOffers() {
   };
   
   return (
-    <section className="py-20 bg-gradient-to-br from-secondary to-background relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-secondary to-background relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 animate-pulse" style={{
@@ -101,20 +101,20 @@ export default function TodaysOffers() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary bg-opacity-20 text-primary px-6 py-2 rounded-full mb-4">
-            <Zap className="h-5 w-5" />
-            <span className="font-semibold">Limited Time Offers</span>
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center space-x-2 bg-primary bg-opacity-20 text-primary px-4 sm:px-6 py-2 rounded-full mb-4">
+            <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="font-semibold text-sm sm:text-base">Limited Time Offers</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Today's <span className="text-primary">Special Deals</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto px-4">
             Don't miss out on these exclusive offers available for a limited time only
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {offers.map((offer) => {
             const isActive = isOfferActive(offer.time)
             const Icon = offer.icon
@@ -134,21 +134,21 @@ export default function TodaysOffers() {
                 )}
 
                 {/* Main Card */}
-                <div className={`bg-gradient-to-br ${offer.color} rounded-3xl p-8 text-black relative overflow-hidden h-full`}>
+                <div className={`bg-gradient-to-br ${offer.color} rounded-3xl p-6 sm:p-8 text-black relative overflow-hidden h-full`}>
                   {/* Background Pattern */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -mr-16 -mt-16"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-10 rounded-full -ml-12 -mb-12"></div>
 
                   <div className="relative z-10 h-full flex flex-col">
                     {/* Header */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center space-x-3">
+                    <div className="flex items-center justify-between mb-4 sm:mb-6">
+                      <div className="flex items-center space-x-2 sm:space-x-3">
                         <div className="bg-black bg-opacity-20 p-2 rounded-xl">
-                          <Icon className="h-6 w-6" />
+                          <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold">{offer.title}</h3>
-                          <p className="text-black text-opacity-80">{offer.description}</p>
+                          <h3 className="text-xl sm:text-2xl font-bold">{offer.title}</h3>
+                          <p className="text-black text-opacity-80 text-sm sm:text-base">{offer.description}</p>
                         </div>
                       </div>
                       {isActive && (
@@ -160,9 +160,9 @@ export default function TodaysOffers() {
                     </div>
 
                     {/* Discount Badge */}
-                    <div className="mb-6">
-                      <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-4 text-center border border-white border-opacity-30">
-                        <span className="text-3xl font-bold block mb-1">{offer.discount}</span>
+                    <div className="mb-4 sm:mb-6">
+                      <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-3 sm:p-4 text-center border border-white border-opacity-30">
+                        <span className="text-2xl sm:text-3xl font-bold block mb-1">{offer.discount}</span>
                         {offer.originalPrice && (
                           <div className="flex items-center justify-center space-x-2">
                             <span className="text-sm line-through opacity-70">{offer.originalPrice}</span>
@@ -176,8 +176,8 @@ export default function TodaysOffers() {
                     </div>
 
                     {/* Items Included */}
-                    <div className="mb-6 flex-1">
-                      <p className="text-black text-opacity-80 text-sm mb-3">Includes:</p>
+                    <div className="mb-4 sm:mb-6 flex-1">
+                      <p className="text-black text-opacity-80 text-xs sm:text-sm mb-2 sm:mb-3">Includes:</p>
                       <div className="space-y-2">
                         {offer.items.map((item, index) => (
                           <div key={index} className="flex items-center space-x-2">
@@ -208,10 +208,10 @@ export default function TodaysOffers() {
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
                   <Link
                     href="/menu"
-                    className="bg-white text-gray-900 font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center space-x-2"
+                    className="bg-white text-gray-900 font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base"
                   >
                     <span>Order Now</span>
-                    <Zap className="h-4 w-4" />
+                    <Zap className="h-3 w-3 sm:h-4 sm:w-4" />
                   </Link>
                 </div>
               </div>

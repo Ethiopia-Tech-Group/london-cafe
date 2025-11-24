@@ -108,54 +108,54 @@ export default function Hero() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl py-4 font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl py-4 font-bold text-white mb-4 sm:mb-6">
             {/* London <span className="text-primary">Cafe</span> */}
           </h1>
 
           {/* Slide Content */}
-          <div className="max-w-3xl mx-auto mb-8">
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
+          <div className="max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
               {heroSlides[currentSlide].title}
             </h2>
-            <p className="text-xl md:text-2xl text-primary font-semibold mb-3">
+            <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold mb-2 sm:mb-3">
               {heroSlides[currentSlide].subtitle}
             </p>
-            <p className="text-lg text-gray-200">
+            <p className="text-base sm:text-lg text-gray-200">
               {heroSlides[currentSlide].description}
             </p>
           </div>
 
           {/* Info Badges */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <div className="flex items-center justify-center text-white bg-primary bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full border border-white border-opacity-30">
-              <Clock className="h-5 w-5 text-primary mr-2" />
-              <span>Open 7AM - 9PM Daily</span>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
+            <div className="flex items-center justify-center text-white bg-primary bg-opacity-20 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white border-opacity-30 text-sm sm:text-base">
+              <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-2" />
+              <span className="text-xs sm:text-base">Open 7AM - 9PM Daily</span>
             </div>
-            <div className="flex items-center justify-center text-white bg-primary bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full border border-white border-opacity-30">
-              <MapPin className="h-5 w-5 text-primary mr-2" />
-              <span>6 Locations Across Ethiopia</span>
+            <div className="flex items-center justify-center text-white bg-primary bg-opacity-20 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white border-opacity-30 text-sm sm:text-base">
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-2" />
+              <span className="text-xs sm:text-base">6 Locations Across Ethiopia</span>
             </div>
-            <div className="flex items-center justify-center text-white bg-primary bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full border border-white border-opacity-30">
-              <Star className="h-5 w-5 text-primary mr-2" />
-              <span>Rated 4.8/5 by Customers</span>
+            <div className="flex items-center justify-center text-white bg-primary bg-opacity-20 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white border-opacity-30 text-sm sm:text-base">
+              <Star className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-2" />
+              <span className="text-xs sm:text-base">Rated 4.8/5 by Customers</span>
             </div>
           </div>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Link 
               href="/menu" 
-              className="bg-primary hover:bg-accent text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+              className="bg-primary hover:bg-accent text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
             >
               <span>Order Online</span>
               <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
             </Link>
             <Link 
               href="/reservations" 
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-600  font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 backdrop-blur-sm border border-white border-opacity-30 flex items-center justify-center space-x-2"
+              className="bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-600 font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105 backdrop-blur-sm border border-white border-opacity-30 flex items-center justify-center space-x-2"
             >
               <span>Reserve Table</span>
-              <Clock className="h-5 w-5" />
+              <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
             </Link>
           </div>
 

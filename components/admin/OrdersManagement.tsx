@@ -95,18 +95,18 @@ export default function OrdersManagement() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-start sm:items-center">
         <div>
-          <h1 className="text-3xl font-bold text-white">Orders Management</h1>
-          <p className="text-gray-400">Manage and track customer orders</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">Orders Management</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Manage and track customer orders</p>
         </div>
       </div>
 
       {/* Filters */}
       <div className="card">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
             <input
@@ -133,7 +133,7 @@ export default function OrdersManagement() {
       </div>
 
       {/* Orders Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
         {filteredOrders.map((order) => (
           <div key={order.id} className="card hover:shadow-lg transition-shadow bg-gray-800 p-4 rounded-lg border border-gray-700">
             {/* Order Header */}

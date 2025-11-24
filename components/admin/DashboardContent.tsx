@@ -105,14 +105,14 @@ export default function DashboardContent() {
   ]
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-white">Dashboard Overview</h1>
-          <p className="text-gray-400">Welcome back, here's what's happening today</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">Dashboard Overview</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Welcome back, here's what's happening today</p>
         </div>
-        <div className="text-gray-400 text-sm">
+        <div className="text-gray-400 text-xs sm:text-sm">
           {new Date().toLocaleDateString('en-US', { 
             weekday: 'long', 
             year: 'numeric', 
@@ -123,9 +123,9 @@ export default function DashboardContent() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
         {statCards.map((stat, index) => (
-          <div key={index} className="card bg-gray-800 p-2 hover:shadow-lg rounded-lg transition-shadow duration-300">
+          <div key={index} className="card bg-gray-800 p-3 sm:p-4 hover:shadow-lg rounded-lg transition-shadow duration-300">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-400 text-sm mb-1">{stat.title}</p>
@@ -145,10 +145,10 @@ export default function DashboardContent() {
       </div>
 
       {/* Charts and Popular Items */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
         {/* Revenue Chart */}
         <div className="xl:col-span-2 card">
-          <h2 className="text-xl font-semibold text-white mb-6">Revenue Overview</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Revenue Overview</h2>
           <div className="space-y-4">
             {stats.revenueData.map((item, index) => (
               <div key={index} className="flex items-center justify-between space-x-4">
@@ -171,7 +171,7 @@ export default function DashboardContent() {
 
         {/* Popular Items */}
         <div className="card">
-          <h2 className="text-xl font-semibold text-white mb-6">Popular Items</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Popular Items</h2>
           <div className="space-y-4">
             {stats.popularItems.map((item, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
@@ -196,8 +196,8 @@ export default function DashboardContent() {
 
       {/* Recent Activity */}
       <div className="card">
-        <h2 className="text-xl font-semibold text-white mb-6">Recent Activity</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <h2 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Recent Activity</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
             { action: 'New order #1248', time: '2 min ago', type: 'order', branch: 'Covent Garden' },
             { action: 'Table reservation', time: '15 min ago', type: 'reservation', branch: 'Soho' },

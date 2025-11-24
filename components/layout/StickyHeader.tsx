@@ -50,22 +50,23 @@ export default function StickyHeader() {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-primary text-white text-sm">
+      <div className="bg-primary text-white text-xs sm:text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-2">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="flex items-center space-x-1">
                 <Phone className="h-3 w-3" />
-                <span>+251 11 663 8115</span>
+                <span className="hidden sm:inline">+251 11 663 8115</span>
+                <span className="sm:hidden">Call Us</span>
               </div>
               <div className="hidden md:flex items-center space-x-1">
                 <MapPin className="h-3 w-3" />
                 <span>6 Locations Across Ethiopia</span>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <span>Open 7AM - 9PM Daily</span>
-              <Link href="/rewards" className="hover:text-gray-200 transition">
+            <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
+              <span className="hidden sm:inline">Open 7AM - 9PM Daily</span>
+              <Link href="/rewards" className="hover:text-gray-200 transition hidden lg:inline">
                 Loyalty Rewards
               </Link>
             </div>
@@ -120,29 +121,11 @@ export default function StickyHeader() {
             </nav>
 
             {/* Right Side Actions */}
-            <div className="flex items-center space-x-4">
-              {/* Search */}
-              {/* <button className={`p-2 rounded-lg transition-all duration-200 ${
-                isScrolled 
-                  ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
-                  : 'text-white hover:bg-white hover:bg-opacity-10'
-              }`}>
-                <Search className="h-5 w-5" />
-              </button> */}
-
-              {/* User Account */}
-              {/* <button className={`p-2 rounded-lg transition-all duration-200 ${
-                isScrolled 
-                  ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
-                  : 'text-white hover:bg-white hover:bg-opacity-10'
-              }`}>
-                <User className="h-5 w-5" />
-              </button> */}
-
+            <div className="flex items-center space-x-2 sm:space-x-4">
               {/* Shopping Cart */}
               <Link 
                 href="/cart" 
-                className={`relative p-2 rounded-lg transition-all duration-200 ${
+                className={`relative p-2 rounded-lg transition-all duration-200 hidden sm:flex ${
                   isScrolled 
                     ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
                     : 'text-white hover:bg-white hover:bg-opacity-10'
@@ -157,7 +140,7 @@ export default function StickyHeader() {
               {/* Order Now Button */}
               <Link 
                 href="/ordering" 
-                className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 ${
+                className={`px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-200 hidden sm:inline-block ${
                   isScrolled
                     ? 'bg-primary hover:bg-accent text-white'
                     : 'bg-white text-gray-900 hover:bg-gray-100'
@@ -183,7 +166,7 @@ export default function StickyHeader() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden bg-background border-t border-gray-800 shadow-2xl">
+          <div className="lg:hidden bg-gray-800 border-t border-gray-800 shadow-2xl">
             <div className="px-4 py-6 space-y-2">
               {navigation.map((item) => (
                 <Link

@@ -52,8 +52,8 @@ export default function StickyFooter() {
   return (
     <footer className="bg-secondary border-t border-gray-700">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
@@ -74,15 +74,15 @@ export default function StickyFooter() {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400 text-sm">
-                <Phone className="h-4 w-4 text-primary" />
-                <span>+251 11 663 8115</span>
+                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
+                <span className="break-all">+251 11 663 8115</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400 text-sm">
-                <Mail className="h-4 w-4 text-primary" />
-                <span>hello@londoncafe.com</span>
+                <Mail className="h-4 w-4 text-primary flex-shrink-0" />
+                <span className="break-all">hello@londoncafe.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400 text-sm">
-                <Clock className="h-4 w-4 text-primary" />
+                <Clock className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>Open Daily: 7:00 AM - 9:00 PM</span>
               </div>
             </div>
@@ -144,13 +144,13 @@ export default function StickyFooter() {
               <p className="text-gray-400 text-sm mb-3">
                 Subscribe for exclusive offers and updates
               </p>
-              <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                 <input
                   type="email"
                   placeholder="Your email"
                   className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-500 focus:outline-none focus:border-primary"
                 />
-                <button className="bg-primary hover:bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                <button className="bg-primary hover:bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap">
                   Join
                 </button>
               </div>
@@ -191,7 +191,7 @@ export default function StickyFooter() {
         {/* Branches Grid */}
         <div className="mt-12 pt-8 border-t border-gray-700">
           <h3 className="text-white font-semibold text-lg mb-4 text-center">Our London Locations</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {branches.map((branch) => (
               <div key={branch} className="text-center group">
                 <div className="bg-gray-800 rounded-lg p-3 group-hover:bg-gray-750 transition-colors">
@@ -209,12 +209,12 @@ export default function StickyFooter() {
       {/* Bottom Bar */}
       <div className="border-t border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-            <div className="text-gray-400 text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+            <div className="text-gray-400 text-sm text-center md:text-left">
               © {currentYear} London Cafe. All rights reserved.
             </div>
-            
-            <div className="flex items-center space-x-6 text-sm">
+                        
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm">
               <Link href="/privacy" className="text-gray-400 hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
@@ -224,7 +224,7 @@ export default function StickyFooter() {
               <Link href="/sitemap" className="text-gray-400 hover:text-primary transition-colors">
                 Sitemap
               </Link>
-              <div className="text-gray-400">
+              <div className="text-gray-400 text-center md:text-left">
                 Powered by Ethiopia Tech Group
               </div>
             </div>
@@ -233,8 +233,8 @@ export default function StickyFooter() {
       </div>
 
       {/* Sticky Order Bar for Mobile */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-primary text-white p-4 shadow-2xl">
-        <div className="flex space-x-3">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-primary text-white p-3 sm:p-4 shadow-2xl z-50">
+        <div className="flex space-x-2 sm:space-x-3">
           <Link 
             href="/ordering" 
             className="flex-1 bg-white text-gray-900 font-semibold py-3 px-4 rounded-lg text-center transition-colors hover:bg-gray-100"

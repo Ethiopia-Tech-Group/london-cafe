@@ -14,7 +14,9 @@ import {
   Search,
   Filter,
   Navigation,
-  ExternalLink
+  ExternalLink,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react'
 
 interface Branch {
@@ -231,6 +233,8 @@ export default function BranchesPage() {
   const [selectedBranch, setSelectedBranch] = useState<Branch>(branches[0])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedFeature, setSelectedFeature] = useState('all')
+  const [isListExpanded, setIsListExpanded] = useState(false)
+  const [isFeaturesExpanded, setIsFeaturesExpanded] = useState(false)
 
   const allFeatures = Array.from(new Set(branches.flatMap(branch => branch.features)))
   
@@ -295,9 +299,23 @@ export default function BranchesPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Branches List */}
-          <div className="lg:col-span-1 space-y-4">
+          <div className="lg:col-span-1">
+            {/* Mobile Toggle Button for Branch List */}
+            <button
+              onClick={() => setIsListExpanded(!isListExpanded)}
+              className="lg:hidden w-full mb-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-between"
+            >
+              <span className="flex items-center space-x-2">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span>All Branches ({filteredBranches.length})</span>
+              </span>
+              {isListExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            </button>
+
+            {/* Branch List Card - Collapsible on mobile */}
+            <div className={`${isListExpanded ? 'block' : 'hidden lg:block'}`}>
             <div className="card">
               <h3 className="text-white font-semibold text-lg mb-4">
                 Our Branches ({filteredBranches.length})
@@ -339,8 +357,22 @@ export default function BranchesPage() {
                 ))}
               </div>
             </div>
+            </div>
 
-            {/* Features Legend */}
+            {/* Mobile Toggle Button for Features */}
+            <button
+              onClick={() => setIsFeaturesExpanded(!isFeaturesExpanded)}
+              className="lg:hidden w-full mt-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-between"
+            >
+              <span className="flex items-center space-x-2">
+                <Wifi className="h-4 w-4 text-primary" />
+                <span>Available Features</span>
+              </span>
+              {isFeaturesExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            </button>
+
+            {/* Features Legend - Collapsible on mobile */}
+            <div className={`mt-4 ${isFeaturesExpanded ? 'block' : 'hidden lg:block'}`}>
             <div className="card">
               <h3 className="text-white font-semibold text-lg mb-4">Available Features</h3>
               <div className="grid grid-cols-2 gap-2">
@@ -354,6 +386,7 @@ export default function BranchesPage() {
                   )
                 })}
               </div>
+            </div>
             </div>
           </div>
 

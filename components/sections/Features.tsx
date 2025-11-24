@@ -66,28 +66,28 @@ export default function Features() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Why Choose <span className="text-primary">London Cafe</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto px-4">
             Experience the difference that quality, passion, and attention to detail make in every cup
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="group text-center p-6 rounded-3xl bg-secondary hover:bg-gray-800 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl border border-gray-700 hover:border-primary"
+              className="group text-center p-4 sm:p-6 rounded-3xl bg-secondary hover:bg-gray-800 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl border border-gray-700 hover:border-primary"
             >
-              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon className="h-8 w-8 text-white" />
+              <div className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
             </div>
@@ -95,19 +95,19 @@ export default function Features() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-primary to-accent rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
+        <div className="text-center mt-12 sm:mt-16">
+          <div className="bg-gradient-to-r from-primary to-accent rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
               Ready to Experience the Difference?
             </h3>
-            <p className="text-white text-opacity-90 mb-6">
+            <p className="text-white text-opacity-90 mb-4 sm:mb-6 text-sm sm:text-base">
               Join thousands of satisfied customers who have made London Cafe their daily ritual
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => (router.push("/ordering"))} className="bg-white text-gray-900 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors cursor-pointer">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <button onClick={() => (router.push("/ordering"))} className="bg-white text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:bg-gray-100 transition-colors cursor-pointer text-sm sm:text-base">
                 Order Now
               </button>
-              <button onClick={() => (router.push("/branches"))} className="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-full cursor-pointer hover:bg-opacity-10 transition-colors">
+              <button onClick={() => (router.push("/branches"))} className="bg-transparent border-2 border-white text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full cursor-pointer hover:bg-opacity-10 transition-colors text-sm sm:text-base">
                 Find a Branch
               </button>
             </div>

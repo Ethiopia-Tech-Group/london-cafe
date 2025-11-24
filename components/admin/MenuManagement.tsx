@@ -137,25 +137,26 @@ export default function MenuManagement() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-white">Menu Management</h1>
-          <p className="text-gray-400">Manage your menu items and categories</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">Menu Management</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Manage your menu items and categories</p>
         </div>
         <button 
           onClick={() => setIsAddModalOpen(true)}
-          className="bg-primary px-2 py-1 rounded flex items-center space-x-2"
+          className="bg-primary px-3 sm:px-4 py-2 rounded flex items-center space-x-2 text-sm sm:text-base"
         >
           <Plus className="h-4 w-4" />
-          <span>Add New Item</span>
+          <span className="hidden sm:inline">Add New Item</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
       {/* Filters */}
       <div className="card">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
             <input
@@ -181,8 +182,8 @@ export default function MenuManagement() {
       </div>
 
       {/* Menu Items Table */}
-      <div className="card">
-        <div className="overflow-x-auto">
+      <div className="card overflow-hidden">
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-700">
@@ -256,8 +257,8 @@ export default function MenuManagement() {
 
       {/* Add/Edit Modal */}
       {(isAddModalOpen || editingItem) && (
-        <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-secondary rounded-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-black">
+        <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-secondary rounded-xl p-4 sm:p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-black">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-white">
                 {editingItem ? 'Edit Menu Item' : 'Add New Menu Item'}

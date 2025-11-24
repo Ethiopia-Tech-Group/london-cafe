@@ -48,7 +48,7 @@ export default function ReviewsPreview() {
   }, [])
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background to-secondary relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-background to-secondary relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-10 left-10 opacity-10">
         <Quote className="h-32 w-32 text-primary" />
@@ -59,23 +59,23 @@ export default function ReviewsPreview() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-primary bg-opacity-20 text-primary px-6 py-2 rounded-full mb-4">
-            <Heart className="h-5 w-5" />
-            <span className="font-semibold">Customer Love</span>
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center space-x-2 bg-primary bg-opacity-20 text-primary px-4 sm:px-6 py-2 rounded-full mb-4">
+            <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="font-semibold text-sm sm:text-base">Customer Love</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Loved by <span className="text-primary">Thousands</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto px-4">
             Don't just take our word for it - hear what our customers have to say about their experience
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Main Review Carousel */}
           <div className="relative">
-            <div className="bg-secondary rounded-3xl p-8 relative overflow-hidden">
+            <div className="bg-secondary rounded-3xl p-6 sm:p-8 relative overflow-hidden">
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 text-primary opacity-20">
                 <Quote className="h-16 w-16" />
@@ -84,11 +84,11 @@ export default function ReviewsPreview() {
               {/* Review Content */}
               <div className="relative z-10">
                 {/* Stars */}
-                <div className="flex mb-6">
+                <div className="flex mb-4 sm:mb-6">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-6 w-6 ${
+                      className={`h-5 w-5 sm:h-6 sm:w-6 ${
                         i < reviews[currentReview].rating 
                           ? 'text-yellow-400 fill-current' 
                           : 'text-gray-600'
@@ -98,19 +98,19 @@ export default function ReviewsPreview() {
                 </div>
 
                 {/* Review Text */}
-                <blockquote className="text-2xl text-white mb-8 leading-relaxed">
+                <blockquote className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 leading-relaxed">
                   "{reviews[currentReview].comment}"
                 </blockquote>
 
                 {/* Reviewer Info */}
-                <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold text-lg">
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
                     {reviews[currentReview].name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-lg">{reviews[currentReview].name}</h4>
-                    <p className="text-primary">{reviews[currentReview].role}</p>
-                    <div className="flex items-center space-x-4 text-gray-400 text-sm mt-1">
+                    <h4 className="text-white font-semibold text-base sm:text-lg">{reviews[currentReview].name}</h4>
+                    <p className="text-primary text-sm sm:text-base">{reviews[currentReview].role}</p>
+                    <div className="flex items-center space-x-2 sm:space-x-4 text-gray-400 text-xs sm:text-sm mt-1">
                       <span>{reviews[currentReview].branch}</span>
                       <span>•</span>
                       <span>{reviews[currentReview].date}</span>
@@ -120,7 +120,7 @@ export default function ReviewsPreview() {
               </div>
 
               {/* Navigation Dots */}
-              <div className="flex justify-center space-x-2 mt-8">
+              <div className="flex justify-center space-x-2 mt-6 sm:mt-8">
                 {reviews.map((_, index) => (
                   <button
                     key={index}
@@ -137,7 +137,7 @@ export default function ReviewsPreview() {
           </div>
 
           {/* Additional Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {reviews.filter((_, idx) => idx !== currentReview).map((review, index) => (
               <div 
                 key={review.id}
@@ -179,7 +179,7 @@ export default function ReviewsPreview() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-gray-700">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-700">
           {[
             { number: '4.8/5', label: 'Average Rating' },
             { number: '2,500+', label: 'Reviews' },
@@ -187,15 +187,15 @@ export default function ReviewsPreview() {
             { number: '98%', label: 'Service Satisfaction' }
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
-              <div className="text-gray-400">{stat.label}</div>
+              <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">{stat.number}</div>
+              <div className="text-gray-400 text-xs sm:text-sm md:text-base">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <button className="bg-primary hover:bg-accent text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105">
+        <div className="text-center mt-8 sm:mt-12">
+          <button className="bg-primary hover:bg-accent text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
             Share Your Experience
           </button>
         </div>
