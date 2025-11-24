@@ -135,7 +135,7 @@ export default function OrdersManagement() {
       {/* Orders Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredOrders.map((order) => (
-          <div key={order.id} className="card hover:shadow-lg transition-shadow">
+          <div key={order.id} className="card hover:shadow-lg transition-shadow bg-gray-800 p-4 rounded-lg border border-gray-700">
             {/* Order Header */}
             <div className="flex justify-between items-start mb-4">
               <div>
@@ -183,7 +183,7 @@ export default function OrdersManagement() {
             <div className="flex space-x-2">
               <button
                 onClick={() => setSelectedOrder(order)}
-                className="flex-1 bg-gray-600 rounded-lg btn-secondary flex items-center justify-center space-x-2 py-2"
+                className="flex-1 bg-primary   rounded-lg btn-secondary flex items-center justify-center space-x-2 py-2"
               >
                 <Eye className="h-4 w-4" />
                 <span>View</span>
@@ -220,8 +220,8 @@ export default function OrdersManagement() {
 
       {/* Order Detail Modal */}
       {selectedOrder && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-secondary rounded-xl p-6 w-full max-w-2xl">
+        <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-secondary rounded-xl p-6 w-full max-w-2xl bg-black">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-white">Order Details - {selectedOrder.id}</h2>
               <button
