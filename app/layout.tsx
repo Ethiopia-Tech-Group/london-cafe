@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
        <body className={`font-sans antialiased flex flex-col min-h-screen ${poppins.variable} `} >
        {!isAdminRoute && <StickyHeader /> }
-        <main className="flex-1 pt-16"> {/* Add padding-top to account for sticky header */}
+        <main className={`flex-1 ${isAdminRoute ?? 'pt-16'}`}> {/* Add padding-top to account for sticky header */}
           {children}
         </main>
         {!isAdminRoute && <StickyFooter />}

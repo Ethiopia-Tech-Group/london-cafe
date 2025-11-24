@@ -1,6 +1,16 @@
 'use client'
 import { useState } from 'react'
-import { Save, Mail, Bell, Shield, Coffee, Users, DollarSign } from 'lucide-react'
+import { Save, Mail, Bell, Shield, Coffee, Users, DollarSign, MapPin, Plus, Edit, Trash2 } from 'lucide-react'
+
+interface Branch {
+  id: string
+  name: string
+  address: string
+  phone: string
+  email: string
+  manager: string
+  status: 'active' | 'inactive'
+}
 
 interface Settings {
   general: {
@@ -32,6 +42,7 @@ interface Settings {
     goldThreshold: number
     platinumThreshold: number
   }
+  branches: Branch[]
 }
 
 export default function SettingsManagement() {
@@ -64,11 +75,50 @@ export default function SettingsManagement() {
       silverThreshold: 0,
       goldThreshold: 1000,
       platinumThreshold: 2500
-    }
+    },
+    branches: [
+      {
+        id: '1',
+        name: 'London Cafe - Bole Road',
+        address: 'Bole Road, Addis Ababa, Ethiopia',
+        phone: '+251 11 663 8115',
+        email: 'bole@londoncafe.et',
+        manager: 'John Doe',
+        status: 'active'
+      },
+      {
+        id: '2',
+        name: 'London Cafe - Bisrate Gabriel',
+        address: 'South Africa Street, Bisrate Gabriel, Addis Ababa',
+        phone: '+251 96 957 1106',
+        email: 'bisrate@londoncafe.et',
+        manager: 'Jane Smith',
+        status: 'active'
+      },
+      {
+        id: '3',
+        name: 'London Cafe - Bole Airport',
+        address: 'Bole International Airport, Addis Ababa',
+        phone: '+251 11 665 4321',
+        email: 'airport@londoncafe.et',
+        manager: 'Mike Johnson',
+        status: 'active'
+      }
+    ]
   })
 
-  const [activeTab, setActiveTab] = useState<'general' | 'notifications' | 'business' | 'loyalty'>('general')
+  const [activeTab, setActiveTab] = useState<'general' | 'notifications' | 'business' | 'loyalty' | 'branches'>('general')
   const [isSaving, setIsSaving] = useState(false)
+  const [isAddingBranch, setIsAddingBranch] = useState(false)
+  const [editingBranch, setEditingBranch] = useState<Branch | null>(null)
+  const [newBranch, setNewBranch] = useState<Partial<Branch>>({
+    name: '',
+    address: '',
+    phone: '',
+    email: '',
+    manager: '',
+    status: 'active'
+  })
 
   const handleSave = async () => {
     setIsSaving(true)
@@ -88,11 +138,49 @@ export default function SettingsManagement() {
     }))
   }
 
+  const addBranch = () => {
+    if (newBranch.name && newBranch.address && newBranch.phone && newBranch.email) {
+      const branch: Branch = {
+        id: Date.now().toString(),
+        name: newBranch.name!,
+        address: newBranch.address!,
+        phone: newBranch.phone!,
+        email: newBranch.email!,
+        manager: newBranch.manager!,
+        status: newBranch.status as 'active' | 'inactive'
+      }
+      setSettings(prev => ({
+        ...prev,
+        branches: [...prev.branches, branch]
+      }))
+      setIsAddingBranch(false)
+      setNewBranch({ name: '', address: '', phone: '', email: '', manager: '', status: 'active' })
+    }
+  }
+
+  const updateBranch = () => {
+    if (editingBranch) {
+      setSettings(prev => ({
+        ...prev,
+        branches: prev.branches.map(b => b.id === editingBranch.id ? editingBranch : b)
+      }))
+      setEditingBranch(null)
+    }
+  }
+
+  const deleteBranch = (id: string) => {
+    setSettings(prev => ({
+      ...prev,
+      branches: prev.branches.filter(b => b.id !== id)
+    }))
+  }
+
   const tabs = [
     { id: 'general' as const, label: 'General', icon: Coffee },
     { id: 'notifications' as const, label: 'Notifications', icon: Bell },
     { id: 'business' as const, label: 'Business', icon: DollarSign },
-    { id: 'loyalty' as const, label: 'Loyalty Program', icon: Users }
+    { id: 'loyalty' as const, label: 'Loyalty Program', icon: Users },
+    { id: 'branches' as const, label: 'Branch Management', icon: MapPin }
   ]
 
   return (
@@ -380,9 +468,204 @@ export default function SettingsManagement() {
                 </div>
               </div>
             )}
+
+            {/* Branch Management */}
+            {activeTab === 'branches' && (
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-2xl font-bold text-white">Branch Management</h2>
+                  <button
+                    onClick={() => setIsAddingBranch(true)}
+                    className="bg-primary hover:bg-accent text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition"
+                  >
+                    <Plus className="h-4 w-4" />
+                    <span>Add Branch</span>
+                  </button>
+                </div>
+
+                {/* Branches List */}
+                <div className="space-y-4">
+                  {settings.branches.map((branch) => (
+                    <div key={branch.id} className="bg-gray-800 rounded-lg p-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-3 mb-2">
+                            <h3 className="text-white font-semibold text-lg">{branch.name}</h3>
+                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                              branch.status === 'active' 
+                                ? 'bg-green-500 bg-opacity-20 text-green-400'
+                                : 'bg-red-500 bg-opacity-20 text-red-400'
+                            }`}>
+                              {branch.status}
+                            </span>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div className="flex items-center space-x-2">
+                              <MapPin className="h-4 w-4 text-primary" />
+                              <span className="text-gray-300">{branch.address}</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Mail className="h-4 w-4 text-primary" />
+                              <span className="text-gray-300">{branch.email}</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Shield className="h-4 w-4 text-primary" />
+                              <span className="text-gray-300">Manager: {branch.manager}</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Coffee className="h-4 w-4 text-primary" />
+                              <span className="text-gray-300">{branch.phone}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2 ml-4">
+                          <button
+                            onClick={() => setEditingBranch(branch)}
+                            className="p-2 text-blue-400 hover:bg-blue-400 hover:bg-opacity-20 rounded-lg transition"
+                          >
+                            <Edit className="h-4 w-4" />
+                          </button>
+                          <button
+                            onClick={() => deleteBranch(branch.id)}
+                            className="p-2 text-red-400 hover:bg-red-400 hover:bg-opacity-20 rounded-lg transition"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Add/Edit Branch Modal */}
+      {(isAddingBranch || editingBranch) && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-secondary rounded-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-white">
+                {editingBranch ? 'Edit Branch' : 'Add New Branch'}
+              </h2>
+              <button
+                onClick={() => {
+                  setIsAddingBranch(false)
+                  setEditingBranch(null)
+                  setNewBranch({ name: '', address: '', phone: '', email: '', manager: '', status: 'active' })
+                }}
+                className="text-gray-400 hover:text-white"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-gray-300 mb-2">Branch Name</label>
+                <input
+                  type="text"
+                  value={editingBranch ? editingBranch.name : newBranch.name}
+                  onChange={(e) => editingBranch
+                    ? setEditingBranch({...editingBranch, name: e.target.value})
+                    : setNewBranch({...newBranch, name: e.target.value})
+                  }
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
+                  placeholder="London Cafe - Location"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-gray-300 mb-2">Address</label>
+                <input
+                  type="text"
+                  value={editingBranch ? editingBranch.address : newBranch.address}
+                  onChange={(e) => editingBranch
+                    ? setEditingBranch({...editingBranch, address: e.target.value})
+                    : setNewBranch({...newBranch, address: e.target.value})
+                  }
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
+                  placeholder="Street, City, Country"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-300 mb-2">Phone</label>
+                <input
+                  type="tel"
+                  value={editingBranch ? editingBranch.phone : newBranch.phone}
+                  onChange={(e) => editingBranch
+                    ? setEditingBranch({...editingBranch, phone: e.target.value})
+                    : setNewBranch({...newBranch, phone: e.target.value})
+                  }
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
+                  placeholder="+251 XX XXX XXXX"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-300 mb-2">Email</label>
+                <input
+                  type="email"
+                  value={editingBranch ? editingBranch.email : newBranch.email}
+                  onChange={(e) => editingBranch
+                    ? setEditingBranch({...editingBranch, email: e.target.value})
+                    : setNewBranch({...newBranch, email: e.target.value})
+                  }
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
+                  placeholder="branch@londoncafe.et"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-300 mb-2">Manager</label>
+                <input
+                  type="text"
+                  value={editingBranch ? editingBranch.manager : newBranch.manager}
+                  onChange={(e) => editingBranch
+                    ? setEditingBranch({...editingBranch, manager: e.target.value})
+                    : setNewBranch({...newBranch, manager: e.target.value})
+                  }
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
+                  placeholder="Manager Name"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-300 mb-2">Status</label>
+                <select
+                  value={editingBranch ? editingBranch.status : newBranch.status}
+                  onChange={(e) => editingBranch
+                    ? setEditingBranch({...editingBranch, status: e.target.value as 'active' | 'inactive'})
+                    : setNewBranch({...newBranch, status: e.target.value as 'active' | 'inactive'})
+                  }
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
+                >
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex justify-end space-x-3 mt-6">
+              <button
+                onClick={() => {
+                  setIsAddingBranch(false)
+                  setEditingBranch(null)
+                  setNewBranch({ name: '', address: '', phone: '', email: '', manager: '', status: 'active' })
+                }}
+                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={editingBranch ? updateBranch : addBranch}
+                className="px-4 py-2 bg-primary hover:bg-accent text-white rounded-lg transition flex items-center space-x-2"
+              >
+                <Save className="h-4 w-4" />
+                <span>{editingBranch ? 'Update Branch' : 'Add Branch'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
