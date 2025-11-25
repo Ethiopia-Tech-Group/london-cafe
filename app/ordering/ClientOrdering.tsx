@@ -402,7 +402,7 @@ export default function ClientOrdering() {
   }
 
   return (
-    <div className="min-h-screen pt-5 bg-background">
+    <div className="min-h-screen pt-10 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {isRedirectedFromBranches && selectedBranch && (
           <div className="mb-6 p-4 bg-green-500 bg-opacity-20 border border-green-500 border-opacity-30 rounded-lg flex items-center justify-between">
