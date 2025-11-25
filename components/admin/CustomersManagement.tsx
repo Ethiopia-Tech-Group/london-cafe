@@ -161,7 +161,7 @@ export default function CustomersManagement() {
                 <p className="text-gray-400 text-xs">Orders</p>
               </div>
               <div className="text-center">
-                <p className="text-white font-bold">£{customer.totalSpent}</p>
+                <p className="text-white font-bold">Br {customer.totalSpent}</p>
                 <p className="text-gray-400 text-xs">Spent</p>
               </div>
               <div className="text-center">
@@ -253,12 +253,12 @@ export default function CustomersManagement() {
                     <p className="text-gray-400 text-sm">Total Orders</p>
                   </div>
                   <div className="bg-gray-800 p-4 rounded-lg text-center">
-                    <p className="text-2xl font-bold text-white">£{selectedCustomer.totalSpent}</p>
+                    <p className="text-2xl font-bold text-white">Br {selectedCustomer.totalSpent}</p>
                     <p className="text-gray-400 text-sm">Total Spent</p>
                   </div>
                   <div className="bg-gray-800 p-4 rounded-lg text-center">
                     <p className="text-2xl font-bold text-white">
-                      £{(selectedCustomer.totalSpent / selectedCustomer.totalOrders).toFixed(2)}
+                      Br {(selectedCustomer.totalSpent / selectedCustomer.totalOrders).toFixed(2)}
                     </p>
                     <p className="text-gray-400 text-sm">Avg. Order</p>
                   </div>

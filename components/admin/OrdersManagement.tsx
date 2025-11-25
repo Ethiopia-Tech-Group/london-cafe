@@ -160,7 +160,7 @@ export default function OrdersManagement() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-400">Total:</span>
-                <span className="text-white font-semibold">£{order.total.toFixed(2)}</span>
+                <span className="text-white font-semibold">Br {order.total.toFixed(2)}</span>
               </div>
             </div>
 
@@ -173,7 +173,7 @@ export default function OrdersManagement() {
                     <span className="text-gray-300">
                       {item.quantity}x {item.name}
                     </span>
-                    <span className="text-gray-400">£{(item.quantity * item.price).toFixed(2)}</span>
+                    <span className="text-gray-400">Br {(item.quantity * item.price).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -255,12 +255,12 @@ export default function OrdersManagement() {
                     <div key={index} className="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
                       <div>
                         <p className="text-white font-medium">{item.name}</p>
-                        <p className="text-gray-400 text-sm">£{item.price.toFixed(2)} each</p>
+                        <p className="text-gray-400 text-sm">Br {item.price.toFixed(2)} each</p>
                       </div>
                       <div className="text-right">
                         <p className="text-white">x{item.quantity}</p>
                         <p className="text-primary font-semibold">
-                          £{(item.quantity * item.price).toFixed(2)}
+                          Br {(item.quantity * item.price).toFixed(2)}
                         </p>
                       </div>
                     </div>
@@ -269,7 +269,7 @@ export default function OrdersManagement() {
               </div>
 
               <div className="flex justify-between items-center pt-4 border-t border-gray-700">
-                <span className="text-xl font-bold text-white">Total: £{selectedOrder.total.toFixed(2)}</span>
+                <span className="text-xl font-bold text-white">Total: Br {selectedOrder.total.toFixed(2)}</span>
                 <div className={`px-3 py-1 rounded-full text-sm text-primary font-semibold flex items-center space-x-1 ${getStatusColor(selectedOrder.status)}`}>
                   {getStatusIcon(selectedOrder.status)}
                   <span className="capitalize">{selectedOrder.status}</span>

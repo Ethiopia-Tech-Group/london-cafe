@@ -82,12 +82,13 @@ export default function CartPage() {
               {cartItems.map(item => (
                 <div key={item.id} className="card flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center">
-                      <span className="text-gray-500 text-xs">IMG</span>
+                    <div className="w-16 h-16 rounded-lg flex items-center justify-center">
+                      {/* <span className="text-gray-500 text-xs">IMG</span> */}
+                      <img src={item.image}  className='h-16 w-16 rounded'/>
                     </div>
                     <div>
                       <h3 className="text-white font-semibold">{item.name}</h3>
-                      <p className="text-primary font-semibold">£{item.price.toFixed(2)}</p>
+                      <p className="text-primary font-semibold">Br {item.price.toFixed(2)}</p>
                       {item.notes && (
                         <p className="text-gray-400 text-sm">Note: {item.notes}</p>
                       )}
@@ -132,16 +133,16 @@ export default function CartPage() {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-gray-300">
                   <span>Subtotal</span>
-                  <span>£{subtotal.toFixed(2)}</span>
+                  <span>Br {subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-gray-300">
                   <span>Service Fee</span>
-                  <span>£{serviceFee.toFixed(2)}</span>
+                  <span>Br {serviceFee.toFixed(2)}</span>
                 </div>
                 <div className="border-t border-gray-700 pt-3">
                   <div className="flex justify-between text-white font-bold text-lg">
                     <span>Total</span>
-                    <span>£{total.toFixed(2)}</span>
+                    <span>Br {total.toFixed(2)}</span>
                   </div>
                 </div>
               </div>

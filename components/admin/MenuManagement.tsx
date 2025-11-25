@@ -215,7 +215,7 @@ export default function MenuManagement() {
                     </span>
                   </td>
                   <td className="py-4">
-                    <span className="text-white font-semibold">£{item.price.toFixed(2)}</span>
+                    <span className="text-white font-semibold">Br {item.price.toFixed(2)}</span>
                   </td>
                   <td className="py-4">
                     <span className="text-gray-300">{item.preparationTime} min</span>
@@ -304,7 +304,7 @@ export default function MenuManagement() {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-300 mb-2">Price (£)</label>
+                <label className="block text-gray-300 mb-2">Price (Br )</label>
                 <input
                   type="number"
                   step="0.01"

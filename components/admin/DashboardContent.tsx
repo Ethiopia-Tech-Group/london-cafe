@@ -72,7 +72,7 @@ export default function DashboardContent() {
     },
     {
       title: 'Total Revenue',
-      value: `£${stats.totalRevenue.toLocaleString()}`,
+      value: `Br ${stats.totalRevenue.toLocaleString()}`,
       icon: DollarSign,
       color: 'text-green-500',
       change: '+8%',
@@ -161,7 +161,7 @@ export default function DashboardContent() {
                     ></div>
                   </div>
                   <span className="text-white font-semibold w-20 text-right">
-                    £{item.revenue.toLocaleString()}
+                    Br {item.revenue.toLocaleString()}
                   </span>
                 </div>
               </div>

@@ -137,7 +137,7 @@ export default function EventsPage() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-primary font-bold text-lg">
-                    {event.price === 0 ? 'FREE' : `£${event.price}`}
+                    {event.price === 0 ? 'FREE' : `Br ${event.price}`}
                   </span>
                   <button className="btn-primary text-sm">
                     Book Now

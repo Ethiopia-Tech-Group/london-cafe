@@ -226,7 +226,7 @@ export default function PromotionsManagement() {
                   {getTypeIcon(promotion.type)}
                   <span className="text-white font-semibold">
                     {promotion.type === 'percentage' ? `${promotion.value}%` : 
-                     promotion.type === 'fixed' ? `£${promotion.value}` : 'BOGO'}
+                     promotion.type === 'fixed' ? `Br ${promotion.value}` : 'BOGO'}
                   </span>
                 </div>
                 <div className="bg-primary bg-opacity-20 text-primary px-3 py-1 rounded text-sm font-mono">
@@ -255,7 +255,7 @@ export default function PromotionsManagement() {
                   {promotion.usedCount} / {promotion.usageLimit || '∞'} used
                 </span>
                 <span>
-                  {promotion.minOrderAmount ? `Min. order: £${promotion.minOrderAmount}` : 'No minimum'}
+                  {promotion.minOrderAmount ? `Min. order: Br ${promotion.minOrderAmount}` : 'No minimum'}
                 </span>
               </div>
             </div>

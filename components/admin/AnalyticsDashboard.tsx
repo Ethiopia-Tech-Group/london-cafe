@@ -121,7 +121,7 @@ export default function AnalyticsDashboard() {
   const statCards = [
     {
       title: 'Total Revenue',
-      value: `£${analytics.revenue.current.toLocaleString()}`,
+      value: `Br ${analytics.revenue.current.toLocaleString()}`,
       icon: DollarSign,
       change: analytics.revenue.change,
       trend: analytics.revenue.trend,
@@ -145,7 +145,7 @@ export default function AnalyticsDashboard() {
     },
     {
       title: 'Average Order',
-      value: `£${analytics.averageOrder.current.toFixed(2)}`,
+      value: `Br ${analytics.averageOrder.current.toFixed(2)}`,
       icon: TrendingUp,
       change: analytics.averageOrder.change,
       trend: analytics.averageOrder.trend,
@@ -225,7 +225,7 @@ export default function AnalyticsDashboard() {
                     ></div>
                   </div>
                   <div className="text-right w-32">
-                    <span className="text-white font-semibold">£{hour.sales}</span>
+                    <span className="text-white font-semibold">Br {hour.sales}</span>
                     <span className="text-gray-400 text-sm ml-2">({hour.orders} orders)</span>
                   </div>
                 </div>
@@ -248,7 +248,7 @@ export default function AnalyticsDashboard() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-white font-semibold">£{item.revenue}</p>
+                  <p className="text-white font-semibold">Br {item.revenue}</p>
                   <div className="flex items-center space-x-1 text-green-500 text-sm">
                     <ArrowUp className="h-3 w-3" />
                     <span>+{item.growth}%</span>
@@ -276,7 +276,7 @@ export default function AnalyticsDashboard() {
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Revenue</span>
-                  <span className="text-white font-semibold">£{branch.revenue.toLocaleString()}</span>
+                  <span className="text-white font-semibold">Br {branch.revenue.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Orders</span>
@@ -285,7 +285,7 @@ export default function AnalyticsDashboard() {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Avg. Order</span>
                   <span className="text-white">
-                    £{(branch.revenue / branch.orders).toFixed(2)}
+                    Br {(branch.revenue / branch.orders).toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -338,7 +338,7 @@ export default function AnalyticsDashboard() {
           <h2 className="text-xl font-semibold text-white mb-6">Recent Activity</h2>
           <div className="space-y-4">
             {[
-              { action: 'New high score: £3,240 in hourly sales', time: '1 PM', type: 'revenue' },
+              { action: 'New high score: Br 3,240 in hourly sales', time: '1 PM', type: 'revenue' },
               { action: 'Best performing item: Flat White', time: 'Today', type: 'menu' },
               { action: 'Covent Garden reached daily target', time: '12 PM', type: 'branch' },
               { action: '25 new customer registrations', time: 'Today', type: 'customers' }
