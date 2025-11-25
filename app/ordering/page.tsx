@@ -5,6 +5,7 @@ import ClientOrdering from './ClientOrdering';
 export default function OrderingPage() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
+        <ClientOrdering />
     </Suspense>
   );
 }
