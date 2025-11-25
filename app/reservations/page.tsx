@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { Calendar, Clock, Users, MapPin, CheckCircle } from 'lucide-react'
+import { Calendar, Clock, Users, MapPin, CheckCircle, ChevronDown } from 'lucide-react'
 
 interface ReservationForm {
   branch: string
@@ -59,7 +59,45 @@ export default function ReservationsPage() {
         return (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-white mb-6">Select Branch</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              {/* Mobile Dropdown (shown on small screens) */}
+              <div className="md:hidden">
+                <div className="relative">
+                  <select
+                    value={formData.branch}
+                    onChange={(e) => updateFormData('branch', e.target.value)}
+                    className="w-full px-4 py-4 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary appearance-none cursor-pointer"
+                  >
+                    <option value="">Choose a branch...</option>
+                    {branches.map(branch => (
+                      <option key={branch.id} value={branch.id}>
+                        {branch.name}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
+                </div>
+                
+                {/* Selected Branch Details */}
+                {formData.branch && (
+                  <div className="mt-4 p-4 bg-gray-800 rounded-lg border-2 border-primary">
+                    <div className="flex items-start space-x-3">
+                      <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-white font-semibold mb-1">
+                          {branches.find(b => b.id === formData.branch)?.name}
+                        </h3>
+                        <p className="text-gray-400 text-sm">
+                          {branches.find(b => b.id === formData.branch)?.address}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Desktop Grid (hidden on mobile) */}
+              <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {branches.map(branch => (
                   <div
                     key={branch.id}
@@ -76,6 +114,7 @@ export default function ReservationsPage() {
                   </div>
                 ))}
               </div>
+              
               <div className="flex justify-end">
                 <button
                   onClick={() => setStep(2)}

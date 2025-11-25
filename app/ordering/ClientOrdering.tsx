@@ -433,24 +433,24 @@ export default function ClientOrdering() {
             </div>
             
             {/* Branch Selector */}
-            <div className="relative">
+            <div className="relative w-full lg:w-auto">
               <button
                 onClick={() => setIsBranchSelectorOpen(!isBranchSelectorOpen)}
-                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-3 rounded-lg flex items-center space-x-3 transition-colors min-w-64"
+                className="w-full bg-gray-800 hover:bg-gray-700 text-white px-4 py-3 rounded-lg flex items-center space-x-3 transition-colors lg:min-w-64"
               >
-                <MapPin className="h-5 w-5 text-primary" />
-                <div className="text-left flex-1">
+                <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
+                <div className="text-left flex-1 min-w-0">
                   <div className="text-sm text-gray-400">Ordering from</div>
-                  <div className="font-semibold">
+                  <div className="font-semibold truncate">
                     {selectedBranch ? selectedBranch.name : 'Select a branch'}
                   </div>
                 </div>
-                <ChevronDown className={`h-4 w-4 transition-transform ${isBranchSelectorOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-4 w-4 transition-transform flex-shrink-0 ${isBranchSelectorOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {/* Branch Dropdown */}
               {isBranchSelectorOpen && (
-                <div className="absolute top-full right-0 mt-2 w-80 bg-secondary border border-gray-700 rounded-lg shadow-2xl z-50">
+                <div className="absolute top-full left-0 right-0 lg:right-0 lg:left-auto mt-2 w-full lg:w-96 bg-secondary border border-gray-700 rounded-lg shadow-2xl z-50">
                   <div className="p-4">
                     <div className="flex justify-between items-center mb-4">
                       <h3 className="text-white font-semibold">Select Branch</h3>
@@ -462,7 +462,7 @@ export default function ClientOrdering() {
                       </button>
                     </div>
                     
-                    <div className="space-y-2 max-h-60 overflow-y-auto">
+                    <div className="space-y-2 max-h-96 overflow-y-auto">
                       {branches.map(branch => (
                         <div
                           key={branch.id}
@@ -480,18 +480,18 @@ export default function ClientOrdering() {
                           }}
                         >
                           <div className="flex justify-between items-start mb-2">
-                            <h4 className="text-white font-semibold">{branch.name}</h4>
+                            <h4 className="text-white font-semibold text-sm">{branch.name}</h4>
                             {branch.popular && (
-                              <span className="bg-primary text-white text-xs px-2 py-1 rounded">Popular</span>
+                              <span className="bg-primary text-white text-xs px-2 py-1 rounded flex-shrink-0">Popular</span>
                             )}
                           </div>
-                          <div className="text-gray-400 text-sm space-y-1">
+                          <div className="text-gray-400 text-xs sm:text-sm space-y-1">
                             <div className="flex items-center space-x-2">
-                              <MapPin className="h-3 w-3" />
-                              <span>{branch.address}</span>
+                              <MapPin className="h-3 w-3 flex-shrink-0" />
+                              <span className="truncate">{branch.address}</span>
                             </div>
                             <div className="flex items-center space-x-2">
-                              <Clock className="h-3 w-3" />
+                              <Clock className="h-3 w-3 flex-shrink-0" />
                               <span>{branch.hours}</span>
                             </div>
                             <div className="flex items-center justify-between">
@@ -514,32 +514,34 @@ export default function ClientOrdering() {
           {/* Order Type Selector */}
           {selectedBranch && (
             <div className="mt-6 pt-6 border-t border-gray-700">
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <button
                   onClick={() => setOrderType('pickup')}
-                  className={`flex gap-4 flex-1 justify-center py-3 px-4 rounded-lg font-semibold transition-colors ${
+                  className={`flex gap-2 sm:gap-4 flex-1 justify-center py-3 px-3 sm:px-4 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
                     orderType === 'pickup'
                       ? 'bg-primary text-white'
                       : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
-                 <PersonStanding /> Pickup from {selectedBranch.name}
+                 <PersonStanding className="h-5 w-5 flex-shrink-0" /> 
+                 <span className="truncate">Pickup from {selectedBranch.name}</span>
                 </button>
                 <button
                   onClick={() => setOrderType('delivery')}
-                  className={`flex-1 flex justify-center gap-4 py-3 px-4 rounded-lg font-semibold transition-colors ${
+                  className={`flex-1 flex justify-center gap-2 sm:gap-4 py-3 px-3 sm:px-4 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
                     orderType === 'delivery'
                       ? 'bg-primary text-white'
                       : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
-                  <Car /> Delivery to My Location
+                  <Car className="h-5 w-5 flex-shrink-0" /> 
+                  <span className="truncate">Delivery to My Location</span>
                 </button>
               </div>
               
               {orderType === 'delivery' && (
                 <div className="mt-4 p-4 bg-yellow-500 bg-opacity-20 border border-yellow-500 border-opacity-30 rounded-lg">
-                  <p className="text-white   text-sm">
+                  <p className="text-white text-sm">
                     💡 Delivery available within 5km radius. Delivery fee: Birr25
                   </p>
                 </div>
@@ -553,9 +555,9 @@ export default function ClientOrdering() {
           <div className="lg:col-span-3">
             {/* Filters */}
             <div className="card mb-6">
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Search */}
-                <div className="lg:col-span-2">
+                <div className="sm:col-span-2">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                     <input
@@ -604,7 +606,7 @@ export default function ClientOrdering() {
                   <button
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
-                    className={`px-4 py-2 rounded-lg transition-all ${
+                    className={`px-3 sm:px-4 py-2 rounded-lg transition-all text-sm sm:text-base ${
                       selectedCategory === category.id
                         ? 'bg-primary text-white'
                         : 'bg-gray-800 text-gray-300 hover:bg-gray-700'

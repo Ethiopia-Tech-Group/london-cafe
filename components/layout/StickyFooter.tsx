@@ -52,7 +52,7 @@ export default function StickyFooter() {
   return (
     <footer className="bg-secondary border-t border-gray-700">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
@@ -88,8 +88,8 @@ export default function StickyFooter() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
+          {/* Quick Links - Hidden on Mobile */}
+          <div className="hidden md:block">
             <h3 className="text-white font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -135,8 +135,8 @@ export default function StickyFooter() {
             </div>
           </div>  */}
 
-          {/* Newsletter & Social */}
-          <div>
+          {/* Newsletter & Social - Hidden on Mobile */}
+          <div className="hidden md:block">
             <h3 className="text-white font-semibold text-lg mb-4">Stay Connected</h3>
             
             {/* Newsletter Signup */}
@@ -186,10 +186,26 @@ export default function StickyFooter() {
               </div>
             </div> */}
           </div>
+          
+          {/* Social Links - Mobile Only */}
+          <div className="md:hidden">
+            <div className="flex justify-center space-x-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-lg flex items-center justify-center transition-colors group"
+                  aria-label={social.name}
+                >
+                  <social.icon className="h-5 w-5 text-gray-400 group-hover:text-white" />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Branches Grid */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
+        {/* Branches Grid - Hidden on Mobile */}
+        <div className="hidden lg:block mt-12 pt-8 border-t border-gray-700">
           <h3 className="text-white font-semibold text-lg mb-4 text-center">Our London Locations</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {branches.map((branch) => (
@@ -229,24 +245,6 @@ export default function StickyFooter() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Sticky Order Bar for Mobile */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-primary text-white p-3 sm:p-4 shadow-2xl z-50">
-        <div className="flex space-x-2 sm:space-x-3">
-          <Link 
-            href="/ordering" 
-            className="flex-1 bg-white text-gray-900 font-semibold py-3 px-4 rounded-lg text-center transition-colors hover:bg-gray-100"
-          >
-            Order Now
-          </Link>
-          <Link 
-            href="/reservations" 
-            className="flex-1 bg-transparent border-2 border-white text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors hover:bg-white hover:bg-opacity-10"
-          >
-            Reserve Table
-          </Link>
         </div>
       </div>
     </footer>
