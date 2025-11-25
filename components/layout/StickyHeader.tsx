@@ -80,7 +80,7 @@ export default function StickyHeader() {
           ? 'bg-background shadow-2xl top-0 border-b border-gray-800' 
           : 'bg-transparent top-10'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="flex justify-between items-center h-12 sm:h-14 lg:h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
@@ -121,7 +121,7 @@ export default function StickyHeader() {
             </nav>
 
             {/* Right Side Actions */}
-            <div className="flex items-center space-x-1 sm:space-x-2">
+            <div className="flex items-center space-x-1 sm:space-x-2 ">
               {/* Shopping Cart */}
               <Link 
                 href="/cart" 
